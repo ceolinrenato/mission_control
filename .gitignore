@@ -22,3 +22,9 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 mission_control-*.tar
 
+# Ignore binary file builded
+/mission_control
+
+# Ignore dialyzer plts
+
+/_dialyzer/
