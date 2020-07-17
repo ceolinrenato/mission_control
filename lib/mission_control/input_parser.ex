@@ -5,9 +5,8 @@ defmodule MissionControl.InputParser do
   def parse(file_path) do
     {:ok, file_content} = File.read(file_path)
 
-    [first_line | rest_of_file] = String.split(file_content, "\n", trim: true)
-
-    with {:ok, land_size} <- parse_land_size(first_line),
+    with [first_line | rest_of_file] <- String.split(file_content, "\n", trim: true),
+         {:ok, land_size} <- parse_land_size(first_line),
          {:ok, probes} <- parse_probes(rest_of_file) do
       %{
         land_size: land_size,
@@ -16,6 +15,9 @@ defmodule MissionControl.InputParser do
     else
       {:error, _} = error ->
         error
+
+      [] ->
+        {:error, "Empty file"}
     end
   end
 
