@@ -26,11 +26,11 @@ defmodule MissionControl.InputParserTest do
                  land_size: {5, 5},
                  probes: [
                    %{
-                     initial_position: {1, 2, "N"},
+                     position: {1, 2, "N"},
                      instructions: ["L", "M", "L", "M", "L", "M", "L", "M", "M"]
                    },
                    %{
-                     initial_position: {3, 3, "E"},
+                     position: {3, 3, "E"},
                      instructions: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"]
                    }
                  ]

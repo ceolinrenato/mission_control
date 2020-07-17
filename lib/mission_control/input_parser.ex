@@ -51,7 +51,7 @@ defmodule MissionControl.InputParser do
 
   defp to_probe({:ok, {init_x, init_y, init_orientation, instructions}}) do
     %{
-      initial_position: {init_x, init_y, init_orientation},
+      position: {init_x, init_y, init_orientation},
       instructions: instructions
     }
   end
