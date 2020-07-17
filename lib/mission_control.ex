@@ -8,14 +8,16 @@ defmodule MissionControl do
         |> Enum.map(&MissionControl.InputParser.parse/1)
         |> IO.inspect()
 
-        :ok
+        terminate_process(:ok)
 
       {:error, error} ->
         IO.puts(error)
 
-        terminate_process()
+        terminate_process(:error)
     end
   end
+
+  defp parse_args([]), do: {:error, "Missing arguments. Usage: mission_control file"}
 
   defp parse_args(args) do
     with {_, input_paths, []} <- OptionParser.parse(args, strict: []),
@@ -41,7 +43,7 @@ defmodule MissionControl do
 
   # For testing with ExUnit means we can't halt the process
   # When running live is desirable that the executable terminates with a non 0 status for error probing
-  defp terminate_process() do
+  defp terminate_process(:error) do
     case function_exported?(Mix, :__info__, 1) do
       true ->
         :error
@@ -50,4 +52,6 @@ defmodule MissionControl do
         System.halt(1)
     end
   end
+
+  defp terminate_process(_), do: :ok
 end

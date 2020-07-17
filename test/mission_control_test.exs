@@ -8,6 +8,10 @@ defmodule MissionControlTest do
       assert MissionControl.main(["--invalid_arg"]) == :error
     end
 
+    test "returns error when called with no arguments" do
+      assert MissionControl.main() == :error
+    end
+
     test "returns okay with valid file path" do
       file_path = "/any/path/file"
 
