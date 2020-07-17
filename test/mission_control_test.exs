@@ -3,6 +3,6 @@ defmodule MissionControlTest do
   doctest MissionControl
 
   test "greets the world" do
-    assert MissionControl.hello() == :world
+    assert MissionControl.main() == :ok
   end
 end
