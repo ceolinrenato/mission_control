@@ -1,18 +1,7 @@
 defmodule MissionControl do
-  @moduledoc """
-  Documentation for `MissionControl`.
-  """
+  @moduledoc false
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> MissionControl.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def main(_args \\ []) do
+    IO.puts("Yo")
   end
 end
