@@ -35,7 +35,8 @@ defmodule MissionControl.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 end
