@@ -1,6 +1,7 @@
 defmodule MissionControl.Mission do
   @moduledoc false
 
+  @spec run(map()) :: map()
   def run(%{probes: probes} = mission_specs) do
     probes
     |> Enum.with_index()
