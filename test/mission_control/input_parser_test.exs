@@ -22,19 +22,21 @@ defmodule MissionControl.InputParserTest do
       file_path = "/any/path/file"
 
       with_mock(File, read: fn ^file_path -> {:ok, file_content} end) do
-        assert %{
-                 land_size: {5, 5},
-                 probes: [
-                   %{
-                     position: {1, 2, "N"},
-                     instructions: ["L", "M", "L", "M", "L", "M", "L", "M", "M"]
-                   },
-                   %{
-                     position: {3, 3, "E"},
-                     instructions: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"]
-                   }
-                 ]
-               } = MissionControl.InputParser.parse(file_path)
+        assert {:ok,
+                %{
+                  file: ^file_path,
+                  land_size: {5, 5},
+                  probes: [
+                    %{
+                      position: {1, 2, "N"},
+                      instructions: ["L", "M", "L", "M", "L", "M", "L", "M", "M"]
+                    },
+                    %{
+                      position: {3, 3, "E"},
+                      instructions: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"]
+                    }
+                  ]
+                }} = MissionControl.InputParser.parse(file_path)
       end
     end
   end

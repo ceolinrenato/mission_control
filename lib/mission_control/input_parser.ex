@@ -1,23 +1,25 @@
 defmodule MissionControl.InputParser do
   @moduledoc false
 
-  @spec parse(binary()) :: {:ok, map()} | {:error, binary()}
+  @spec parse(binary()) :: {:ok, map()} | {:error, {binary(), binary()}}
   def parse(file_path) do
     {:ok, file_content} = File.read(file_path)
 
     with [first_line | rest_of_file] <- String.split(file_content, "\n", trim: true),
          {:ok, land_size} <- parse_land_size(first_line),
          {:ok, probes} <- parse_probes(rest_of_file) do
-      %{
-        land_size: land_size,
-        probes: probes
-      }
+      {:ok,
+       %{
+         file: file_path,
+         land_size: land_size,
+         probes: probes
+       }}
     else
-      {:error, _} = error ->
-        error
+      {:error, error_reason} ->
+        {:error, {file_path, error_reason}}
 
       [] ->
-        {:error, "Empty file"}
+        {:error, {file_path, "Empty file"}}
     end
   end
 
@@ -37,7 +39,7 @@ defmodule MissionControl.InputParser do
       |> Enum.chunk_every(2)
       |> Enum.map(&parse_single_probe/1)
 
-    case Enum.filter(probes, fn {status, _} -> status == :error end) do
+    case Enum.filter(probes, fn {result, _} -> result == :error end) do
       [bad_probe | _rest] ->
         bad_probe
 
