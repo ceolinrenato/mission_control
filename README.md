@@ -35,3 +35,6 @@ This is a mix project so to run the tests you can just execute in the terminal:
 
     mix test
 
+### Changelog
+
+You can check this project changelog [here](CHANGELOG.md)
