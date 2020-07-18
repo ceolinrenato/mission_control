@@ -9,7 +9,7 @@ As inspiration for the project this [programming chalenge](challenge_specs.pdf) 
 
 ## Installation
 
- 1. Install Elixir and Erlang if you haven't already (this project includes a [.tool-versions](.tool_versions) file, so if you have [asdf](https://github.com/asdf-vm/asdf) you can just run asdf install in the root folder).
+ 1. Install Elixir and Erlang if you haven't already (this project includes a [.tool-versions](.tool-versions) file, so if you have [asdf](https://github.com/asdf-vm/asdf) you can just run asdf install in the root folder).
  2. Run `mix deps.get && mix escript.build`, this will get all dependencies and build the executable in the project's root directory
 
 ## Running the app
