@@ -4,9 +4,20 @@ defmodule MissionControl do
   def main(args \\ []) do
     case parse_args(args) do
       {:ok, input_paths} ->
-        input_paths
-        |> Enum.map(&MissionControl.InputParser.parse/1)
-        |> IO.inspect()
+        parsed_paths =
+          input_paths
+          |> Enum.uniq()
+          |> Enum.map(&MissionControl.InputParser.parse/1)
+
+        parsed_paths
+        |> Enum.reject(fn {parse_result, _} -> parse_result == :error end)
+        |> Enum.map(fn {_, mission_spec} -> mission_spec end)
+        |> Enum.map(&MissionControl.Mission.run/1)
+        |> Enum.each(&print_result/1)
+
+        parsed_paths
+        |> Enum.reject(fn {parse_result, _} -> parse_result == :ok end)
+        |> Enum.each(&print_error/1)
 
         terminate_process(:ok)
 
@@ -15,6 +26,19 @@ defmodule MissionControl do
 
         terminate_process(:error)
     end
+  end
+
+  defp print_result(%{file: file, probes: probes}) do
+    probe_results =
+      probes
+      |> Enum.map(fn %{position: {x, y, orientation}} -> "#{x} #{y} #{orientation}" end)
+      |> Enum.join("\n")
+
+    IO.puts("Results for: #{file}\n#{probe_results}\n")
+  end
+
+  defp print_error({:error, {file_path, error_reason}}) do
+    IO.puts("Error at #{file_path}: #{error_reason}\n")
   end
 
   defp parse_args([]), do: {:error, "Missing arguments. Usage: mission_control file"}
