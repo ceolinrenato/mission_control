@@ -11,6 +11,8 @@ As inspiration for the project this [programming chalenge](challenge_specs.pdf) 
 
 The programming challenge specs didn't say anything about probe colisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
 
+**TO-DO**: at the moment two or more probes can still be initialized in the same coordinates, this should be validated also
+
 ## Installation
 
  1. Install Elixir and Erlang if you haven't already (this project includes a [.tool-versions](.tool-versions) file, so if you have [asdf](https://github.com/asdf-vm/asdf) you can just run asdf install in the root folder).
