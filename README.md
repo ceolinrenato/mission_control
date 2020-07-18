@@ -7,6 +7,10 @@ This is a small proof of concept I've made to experience building CLI applicatio
 
 As inspiration for the project this [programming chalenge](challenge_specs.pdf) was used as an implementation goal for this CLI project.  
 
+## Considerations
+
+The programming challenge specs didn't say anything about probe colisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
+
 ## Installation
 
  1. Install Elixir and Erlang if you haven't already (this project includes a [.tool-versions](.tool_versions) file, so if you have [asdf](https://github.com/asdf-vm/asdf) you can just run asdf install in the root folder).
