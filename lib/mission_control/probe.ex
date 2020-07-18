@@ -1,6 +1,8 @@
 defmodule MissionControl.Probe do
   @moduledoc false
 
+  @spec move(map(), {integer(), integer(), binary()}, binary()) ::
+          {integer(), integer(), binary()}
   def move(_mission, {x, y, "N"}, "R") do
     {x, y, "E"}
   end
