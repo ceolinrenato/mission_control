@@ -9,7 +9,7 @@ As inspiration for the project this [programming chalenge](challenge_specs.pdf) 
 
 ## Considerations
 
-The programming challenge specs didn't say anything about probe colisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
+The programming challenge specs didn't state anything about probe colisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
 
 **TO-DO**: at the moment two or more probes can still be initialized in the same coordinates, this should be validated also
 
