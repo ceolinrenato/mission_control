@@ -3,7 +3,7 @@
 
   
 
-This is a small proof of concept I've made to experience building CLI applications with Elixir. I've used the **Escript**, a builtin tool in mix to produce binary executables that can be run on any system with Erlang installed, [check it out on Elixir School](https://elixirschool.com/en/lessons/advanced/escripts/).
+This is a small proof of concept I've made to experience building CLI applications with Elixir. I've used **Escript**, a builtin tool in mix to produce binary executables that can be run on any system with Erlang installed, [check it out on Elixir School](https://elixirschool.com/en/lessons/advanced/escripts/).
 
 As inspiration for the project this [programming chalenge](challenge_specs.pdf) was used as an implementation goal for this CLI project.  
 
