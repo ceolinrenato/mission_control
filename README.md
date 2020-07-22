@@ -1,13 +1,13 @@
 
 # MissionControl
 
-This is a small proof of concept I've made to experience building CLI applications with Elixir. I've used the **Escript**, a builtin tool in mix to produce binary executable files that can be run on any system with Erlang installed, [check it out on Elixir School](https://elixirschool.com/en/lessons/advanced/escripts/).
+This is a small proof of concept I've made to experience building CLI applications with Elixir. I've used **Escript**, a builtin tool in mix to produce binary executable files that can be run on any system with Erlang installed, [check it out on Elixir School](https://elixirschool.com/en/lessons/advanced/escripts/).
 
 As inspiration for the project this [programming challenge](challenge_specs.pdf) was used as an implementation goal for this CLI project.  
 
 ## Considerations
 
-The programming challenge specs didn't say anything about probe collisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
+The programming challenge specs didn't state anything about probe collisions or probes going out of the land boundaries. But I've decided to implement these features, so whenever a probe tries to move out of the land limits or to a position another probe is located it will stay still.
 
 **TO-DO**: at the moment two or more probes can still be initialized in the same coordinates, this should be validated also
 
